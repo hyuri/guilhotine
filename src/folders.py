@@ -30,7 +30,7 @@ folders = {
 }
 
 # Creating required default folders
-for f in ["input", "output"]:
+for f in ["input", "output", "memory"]:
 	try:
 		folders[f].mkdir()
 
