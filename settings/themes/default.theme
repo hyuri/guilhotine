@@ -1,0 +1,27 @@
+# Theme file {{{ TEMPORARY SYSTEM — NOT SAFE }}}
+
+from constants import *
+
+theme_data = {
+	"TLabelframe": {
+		"configure": {
+			"padding": [10, 10]
+		}
+	},
+	"TLabelframe.Label": {
+		"configure": {
+			"foreground": "black"
+		}
+	},
+	"TLabel": {
+		"configure": {
+			"padding": [10, 10],
+			"font": DEFAULT_FONT
+		}
+	},
+	"Title.TLabel": {
+		"configure": {
+			"font": TITLE_FONT
+		}
+	}
+}

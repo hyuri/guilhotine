@@ -1,0 +1,8 @@
+Design/
+sample_io/
+
+guilhotine.sublime-project
+guilhotine.sublime-workspace
+
+*.py[co]
+__pycache__/
