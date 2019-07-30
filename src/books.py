@@ -216,11 +216,19 @@ def output_chapters(files):
 		except FileExistsError:
 			pass
 
-		# Write
+		# Create subfolders if nonexistent
+		for subfolder in ["text", "audio", "images"]:
+			try:
+				(get_folder("output")/file.stem/subfolder).mkdir()
+			except FileExistsError:
+				pass
+
+		# Write chapters
 		for i, chapter in enumerate(chapters):
-			(get_folder("output")/file.stem/f"{i}.md").write_text(chapter, encoding=TEXT_ENCODING)
+			(get_folder("output")/file.stem/"text"/f"{i}.md").write_text(chapter, encoding=TEXT_ENCODING)
 
 			print(".", end="")
+
 		print("\nDone.")
 
 def output_metadata(files):
