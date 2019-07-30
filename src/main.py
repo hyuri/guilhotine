@@ -15,7 +15,7 @@ Specifications:
 
 import argparse
 
-from memory import update_internal_memory
+from memory import update_internal_memory, recall_last_folders
 
 import cli
 import gui

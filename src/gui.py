@@ -22,7 +22,7 @@ from tkinter.ttk import *
 from constants import *
 
 from folders import get_folder, set_folder
-from memory import get_memory, set_memory, update_internal_memory, recall_last_folders
+from memory import get_memory, set_memory, update_internal_memory
 from shortcuts import bind_shortcuts
 #from themes import get_theme_data
 
