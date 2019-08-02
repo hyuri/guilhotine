@@ -154,13 +154,32 @@ def get_chapters_count(text):
 	"""Expects formatted text."""
 	return text.count("# ") - (FIRST_CHAPTER_HASHES_COUNT - 1)
 
-def get_title(text):
+def get_title(text, subtitle=False):
 	"""Expects formatted text."""
-	return get_within_parentheses(text, "title", 1)
+	title_start = text.find("# ") + len("# ")
+	title_end = text.find("\n", title_start)
+	
+	title_line = text[title_start : title_end].strip()
+
+	title = get_within_parentheses(title_line, 1)
+
+	if subtitle:
+		subtitle_start = text.find("# ", title_end + EOLS_TARGET) + len("# ")
+		subtitle_end = text.find("\n", subtitle_start)
+		
+		# Setting title_line to "subtitle line"
+		title_line = text[subtitle_start : subtitle_end]
+		title = get_within_parentheses(title_line, 1)
+
+	if not title:
+		print("Title-Within-Parentheses not dectected. Using entire title line instead.")
+		return title_line
+
+	return title
 
 def get_subtitle(text):
 	"""Expects formatted text."""
-	return get_within_parentheses(text, "title", 2)
+	return get_title(text, subtitle=True)
 
 def get_target_audience(text):
 	"""Get from first "\n- " after preceding symbol(currently, 3rd hash) to "\n" + 1 != "-
@@ -193,9 +212,9 @@ def get_target_audience(text):
 	# Replace EOLs with one single EOL
 	target_audience = text[start + EOLS_TARGET : end].replace("{}".format("\n" * EOLS_TARGET), "\n")
 
-	# Remove semicolons
+	# Remove semicolons and periods
 	target_audience = target_audience.replace(";", "").replace(".", "")
-
+	
 	return target_audience
 
 #------------------------------------------------------------------------------
@@ -289,7 +308,7 @@ def output_metadata(files):
 			(get_folder("output")/file.stem).mkdir()
 		except FileExistsError:
 			pass
-
+		
 		(get_folder("output")/file.stem/"data.book.json").write_text(json.dumps(metadata, indent=JSON_INDENT_AMOUNT, ensure_ascii=TEXT_IS_ASCII))
 
 		print("Done.")

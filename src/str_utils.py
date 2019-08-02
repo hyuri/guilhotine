@@ -88,13 +88,13 @@ def get_encapsulated(text, encapsulators, item_number, tuple_with_index=False):
 
 	return encapsulated
 
-def get_within_parentheses(text, label, item_number):
+def get_within_parentheses(text, item_number):
 	"""Expects formatted text."""
 	encapsulators = "()"
 
 	prop = get_encapsulated(text, encapsulators, item_number)
 
 	if not prop:
-		print(f"{label.capitalize()} not dectected.")
+		return
 	
 	return prop
