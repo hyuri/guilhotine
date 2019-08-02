@@ -73,6 +73,7 @@ def get_formatted_text(text):
 	# Remove double spaces, double asterisks and double hashes; Double EOLs; Fix inline(3rd) hash.
 	# (i) Note that "fix_hashes" should always execute *before* "fix_eols",
 	#     else one EOL will be missing before the inline(3rd) hash
+	text = fix_invalid_chars(text)
 	text = fix_hashes(text)
 	text = fix_spaces(text)
 	text = fix_asterisks(text)
@@ -147,6 +148,10 @@ def fix_eols(text):
 			previous_eol = next_eol - 1
 
 	return text
+
+def fix_invalid_chars(text):
+	# Sometimes there are \u200b chars that break the encoding so we need to remove them
+	return text.replace("\u200b", "")
 
 # Metadata extraction
 
@@ -309,6 +314,9 @@ def output_metadata(files):
 		except FileExistsError:
 			pass
 		
-		(get_folder("output")/file.stem/"data.book.json").write_text(json.dumps(metadata, indent=JSON_INDENT_AMOUNT, ensure_ascii=IS_TEXT_ASCII))
+		try:
+			(get_folder("output")/file.stem/"data.book.json").write_text(json.dumps(metadata, indent=JSON_INDENT_AMOUNT, ensure_ascii=IS_TEXT_ASCII))
+		except UnicodeEncodeError:
+			print(f"(!) Could not create metadata(.json) for '{file.name}'. Non-Unicode characters found in the input text.")
 
 		print("Done.")
