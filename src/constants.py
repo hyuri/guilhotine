@@ -25,7 +25,7 @@ TARGET_AUDIENCE_PRECEDING_SYMBOL_NUMBER = 3
 
 JSON_INDENT_AMOUNT = 2
 TEXT_ENCODING = "utf-8"
-TEXT_IS_ASCII = True if TEXT_ENCODING is "ascii" else False
+IS_TEXT_ASCII = True if TEXT_ENCODING is "ascii" else False
 
 
 #------------------------------------------------------------------------------

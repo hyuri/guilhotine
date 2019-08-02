@@ -214,7 +214,7 @@ def get_target_audience(text):
 
 	# Remove semicolons and periods
 	target_audience = target_audience.replace(";", "").replace(".", "")
-	
+
 	return target_audience
 
 #------------------------------------------------------------------------------
@@ -309,6 +309,6 @@ def output_metadata(files):
 		except FileExistsError:
 			pass
 		
-		(get_folder("output")/file.stem/"data.book.json").write_text(json.dumps(metadata, indent=JSON_INDENT_AMOUNT, ensure_ascii=TEXT_IS_ASCII))
+		(get_folder("output")/file.stem/"data.book.json").write_text(json.dumps(metadata, indent=JSON_INDENT_AMOUNT, ensure_ascii=IS_TEXT_ASCII))
 
 		print("Done.")
