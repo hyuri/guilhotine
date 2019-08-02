@@ -17,9 +17,9 @@ APP_NAME = "Guilhotine"
 
 #------------------------------------------------------------------------------
 # Books
+CHAPTER_START = "# "
 FIRST_CHAPTER_HASHES_COUNT = 4
 EOLS_TARGET = 2
-CHAPTER_START = "# "
 TARGET_AUDIENCE_PRECEDING_SYMBOL = "#"
 TARGET_AUDIENCE_PRECEDING_SYMBOL_NUMBER = 3
 

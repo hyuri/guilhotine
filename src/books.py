@@ -125,7 +125,7 @@ def fix_inline_hash(text):
 
 # Sometimes the first hash is not followed by a space but it should
 def fix_first_hash(text):
-	return text.replace("#", "# ", 1) if text[text.find("#") + 1] != " " else text
+	return text.replace("#", CHAPTER_START, 1) if text[text.find("#") + 1] != " " else text
 
 def fix_hashes(text):
 	return fix_inline_hash(fix_first_hash(text.replace("##", "#")))
@@ -157,11 +157,11 @@ def fix_invalid_chars(text):
 
 def get_chapters_count(text):
 	"""Expects formatted text."""
-	return text.count("# ") - (FIRST_CHAPTER_HASHES_COUNT - 1)
+	return text.count(CHAPTER_START) - (FIRST_CHAPTER_HASHES_COUNT - 1)
 
 def get_title(text, subtitle=False):
 	"""Expects formatted text."""
-	title_start = text.find("# ") + len("# ")
+	title_start = text.find(CHAPTER_START) + len(CHAPTER_START)
 	title_end = text.find("\n", title_start)
 	
 	title_line = text[title_start : title_end].strip()
@@ -169,7 +169,7 @@ def get_title(text, subtitle=False):
 	title = get_within_parentheses(title_line, 1)
 
 	if subtitle:
-		subtitle_start = text.find("# ", title_end + EOLS_TARGET) + len("# ")
+		subtitle_start = text.find(CHAPTER_START, title_end + EOLS_TARGET) + len(CHAPTER_START)
 		subtitle_end = text.find("\n", subtitle_start)
 		
 		# Setting title_line to "subtitle line"
@@ -251,9 +251,10 @@ def output_chapters(files):
 		for i, chapter in enumerate(chapters):
 			(get_folder("output")/file.stem/"text"/f"{i}.md").write_text(chapter, encoding=TEXT_ENCODING)
 
-			print(".", end="")
+			print(i, end=" ")
 
-		print("\nDone.")
+		print("\n")
+		print("Done.")
 
 def output_metadata(files):
 	for file in files:
