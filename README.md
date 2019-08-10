@@ -10,3 +10,5 @@ Export the chapters of a book* into individual files along with its associated m
 Written in Python(3.6+), and the GUI version uses tkinter.
 
 You can run it in GUI mode or CLI mode(check the docs for instructions).
+
+Lots of things can be improved. I wrote it for a very specific job that required even less.
