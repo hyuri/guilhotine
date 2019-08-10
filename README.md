@@ -2,7 +2,7 @@
 ## Bechapter Your Books!
 
 #### About
-Export the chapters of a book* into individual files along with its associated metadata.
+Extract and export the chapters of books* into individual files along with its associated metadata.
 
 *Currently, only supports an in-house very specific format
 
