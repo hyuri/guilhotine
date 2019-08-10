@@ -11,4 +11,4 @@ Written in Python(3.6+), and the GUI version uses tkinter.
 
 You can run it in GUI mode or CLI mode(check the docs for instructions).
 
-Lots of things can be improved. I wrote it for a very specific job that required way less but I went the extra mile and made it a little fancier, with a GUI and support for "remembering" last used paths.
+Lots of things can be improved. I wrote it for a very specific job that required way less but I went the extra mile and made it a little fancier, with a GUI and support for "remembering" last used paths, for practice.
