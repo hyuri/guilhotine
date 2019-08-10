@@ -6,7 +6,7 @@
 #### About
 Extract and export the chapters of books* into individual files along with its associated metadata.
 
-*Currently, only supports an in-house, very specific, format
+*Currently, only supports an in-house, very specific, format.
 
 #### Implementation details
 Written in Python(3.6+), and the GUI version uses tkinter.
