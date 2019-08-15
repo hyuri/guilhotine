@@ -1,8 +1,11 @@
-sample_io/
-paths.memory
+io/input/
+io/output/
+io/sample_io/
 
-guilhotine.sublime-project
-guilhotine.sublime-workspace
+paths.memory
 
 *.py[co]
 __pycache__/
+
+*.sublime-project
+*.sublime-workspace
