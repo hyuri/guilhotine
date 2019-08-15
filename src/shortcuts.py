@@ -8,9 +8,6 @@ Format/Clean Up and Break Book(text) Files Into Chapters. (See "specs.md" for de
 
 Implementation:
 	Hyuri Pimentel
-
-Specifications:
-	Guilherme Viotti
 """
 
 from common import *
