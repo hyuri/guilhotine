@@ -8,14 +8,12 @@ Format/Clean Up and Break Book(text) Files Into Chapters. (See "specs.md" for de
 
 Implementation:
 	Hyuri Pimentel
-
-Specifications:
-	Guilherme Viotti
 """
 
+import os
 from pathlib import Path
 
-root = Path("../")
+root = Path(os.path.dirname(os.path.realpath(__file__))).parent
 
 folders = {
 	"root": root,
